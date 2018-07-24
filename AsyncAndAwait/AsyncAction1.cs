@@ -19,6 +19,8 @@ namespace AsyncAndAwait
 
             int resul  = await LoadSomeDataAsync();
 
+           
+
             store.Dispatch(new SetIsLoading
             {
                 IsLoading = false
