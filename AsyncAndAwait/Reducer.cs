@@ -12,10 +12,6 @@ namespace AsyncAndAwait
     {
         public static AppState ReduceAppState(AppState state, IAction action)
         {
-            if (action is ComplexAction)
-            {
-                return ExecuteComplexAction(state);
-            }
             if (action is SetProgress)
                 return new AppState
                 {

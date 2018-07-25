@@ -70,7 +70,6 @@
   <ItemGroup>
     <Compile Include="AppState.cs" />
     <Compile Include="AsyncAction1.cs" />
-    <Compile Include="ComplexAction.cs" />
     <Compile Include="ICompositeAction.cs" />
     <Compile Include="ActionMiddlewares.cs" />
     <Compile Include="IPrintableAction.cs" />
