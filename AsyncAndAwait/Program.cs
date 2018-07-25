@@ -14,14 +14,14 @@ namespace AsyncAndAwait
         static void Main(string[] args)
         {
 
-            Store = new Store<AppState>(Reducer.ReduceAppState, new AppState(), PrintActionsMiddleware.PrintActions);
+            Store = new Store<AppState>(Reducer.ReduceAppState, new AppState(), ActionMiddlewares.CompositeActons, ActionMiddlewares.PrintActons);
             Store.Subscribe(x => Console.WriteLine(
                 string.Format("Val = {0}, Progress = {1}, IsLoading = {2}, Result = {3}", x.Val, x.Progress, x.IsLoading, x.Result)));
 
             //Store.Dispatch(new ComplexAction());
             Store.Dispatch(new AsyncAction1());
 
-            Console.WriteLine("Main thread finished");
+            Console.WriteLine("Main thread finished dispatchiung, you can type while async action is running....");
             Console.WriteLine(Console.ReadLine());
             Console.ReadLine();
 

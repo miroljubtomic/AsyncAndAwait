@@ -72,7 +72,8 @@
     <Compile Include="AsyncAction1.cs" />
     <Compile Include="ComplexAction.cs" />
     <Compile Include="ICompositeAction.cs" />
-    <Compile Include="PrintActionsMiddleware.cs" />
+    <Compile Include="ActionMiddlewares.cs" />
+    <Compile Include="IPrintableAction.cs" />
     <Compile Include="SetIsLoading.cs" />
     <Compile Include="SetProgress.cs" />
     <Compile Include="SetResult.cs" />

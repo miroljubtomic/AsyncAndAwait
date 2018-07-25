@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace AsyncAndAwait
 {
-    public class AsyncAction1 : ICompositeAction<AppState>
+    public class AsyncAction1 : ICompositeAction<AppState>, IPrintableAction
     {
         public async void Execute(Dispatcher dispatcher, Func<AppState> getState)
         {
@@ -17,11 +17,16 @@ namespace AsyncAndAwait
                 IsLoading = true
             });
 
-            int resul  = await LoadSomeDataAsync();
+            int result  = await LoadSomeDataAsync();
 
             dispatcher(new SetIsLoading
             {
                 IsLoading = false
+            });
+
+            dispatcher(new SetResult
+            {
+                Result = result
             });
         }
         static async Task<int> LoadSomeDataAsync()
@@ -40,6 +45,11 @@ namespace AsyncAndAwait
                 }
                 return sum;
             });
+        }
+
+        public string GetString()
+        {
+            return "Ovo je Async action 1";
         }
     }
 }
