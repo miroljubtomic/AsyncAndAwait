@@ -13,10 +13,10 @@ namespace AsyncAndAwait
         {
             return (Dispatcher next) => (IAction action) =>
             {
-                var thunkAction = action as IAsyncAction<TState>;
+                var thunkAction = action as ICompositeAction<TState>;
                 if (thunkAction != null)
                 {
-                    thunkAction.Execute(store);
+                    thunkAction.Execute(store.Dispatch, store.GetState);
                     return thunkAction;
                 }
                 //return action;
@@ -56,10 +56,10 @@ namespace AsyncAndAwait
         {
             return (Func<IAction, IAction> next) => (IAction action) =>
             {
-                var thunkAction = action as IAsyncAction<TState>;
+                var thunkAction = action as ICompositeAction<TState>;
                 if (thunkAction != null)
                 {
-                    thunkAction.Execute(store);
+                    thunkAction.Execute(store.Dispatch, store.GetState);
                     return thunkAction;
                 }
                 //return action;

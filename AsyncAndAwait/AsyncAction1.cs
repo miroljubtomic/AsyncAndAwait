@@ -8,20 +8,18 @@ using System.Threading;
 
 namespace AsyncAndAwait
 {
-    public class AsyncAction1 : IAsyncAction<AppState>
+    public class AsyncAction1 : ICompositeAction<AppState>
     {
-        public async void Execute(IStore<AppState> store)
+        public async void Execute(Dispatcher dispatcher, Func<AppState> getState)
         {
-            store.Dispatch(new SetIsLoading
+            dispatcher(new SetIsLoading
             {
                 IsLoading = true
             });
 
             int resul  = await LoadSomeDataAsync();
 
-           
-
-            store.Dispatch(new SetIsLoading
+            dispatcher(new SetIsLoading
             {
                 IsLoading = false
             });

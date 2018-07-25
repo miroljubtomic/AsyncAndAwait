@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace AsyncAndAwait
 {
-    public interface IAsyncAction<TState> : IAction
+    public interface ICompositeAction<TState> : IAction
     {
-        void Execute(IStore<TState> store);
+        void Execute(Dispatcher dispatcher, Func<TState> getState);
     }
 }
